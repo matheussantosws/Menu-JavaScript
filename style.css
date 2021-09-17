@@ -1,0 +1,120 @@
+body ul {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+a:hover {
+    background: rgb(0, 0, 0, .05);
+}
+#header {
+    box-sizing: border-box;
+    height: 70px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #e7e7e7;
+}
+
+#menu {
+    display: flex;
+    list-style: none;
+    gap: .5rem; /*Da um espaçamento entre as opções do menu*/
+}
+#menu a {
+    display: block;
+    padding: 0.5rem;
+}
+#btn-mobile {
+    display: none;/*Na tela em proporção normal esconde o botão - Mostra apenas o menu -> sobre contanto etc*/
+}
+@media (max-width: 500px){
+    #btn-mobile {
+        display: block;/*Quando a tela estiver meno que 500, mostra o botão epnas do menu*/
+    }
+    #menu {
+        display: block; 
+        position: absolute;
+        width: 100%;
+        top: 80px;
+        right: 0px ;
+        background: #e7e7e7;
+        z-index: 1000; /*faz com o menu fique por cima de todo o site*/
+        height: 0px;
+        transition: .6s;
+        visibility: hidden;
+        overflow-y: hidden;
+    }
+
+    #nav.active #menu {
+        height: calc(100vh - 80px); /*ele faz com esse vh - mostre na telainteira o menu qd ativado, mostrando as opções*/ /*a função cal faz com q o menu qd ativado n tenha barra de rolagem*/
+        visibility: visible;
+        display: block; /*qd ativado a fução do javascript o menu aparece*/
+        overflow-y: auto;
+    }
+
+    li {
+        padding-left: 0.5rem;
+        font-weight: bolder;
+    }
+
+    #menu a {
+        padding: 1rem /*1 rem pra cima e pra baixo*/ 0 /* e 0 para um lado e para o outro*/;
+        margin: 0 1rem;
+        border-bottom: 2px solid rgb(0, 0, 0, .05);
+    }
+    #btn-mobile {
+        display: flex;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        border: none;
+        background: none;
+        cursor: pointer;
+        gap: .5rem;
+    }
+    #hamburguer {
+        border-top: 2px solid;
+        width: 20px;
+    }
+    #hamburguer::after, #hamburguer::before {
+        content: '';
+        display: block;
+        width: 20px;
+        height: 2px;
+        background:currentColor;
+        margin-top: 5px;
+        position: relative;
+    }
+    #nav.active #hamburguer {
+        border-top-color: transparent; /*qd ativado o menu desaparece um traço*/
+    }
+    /*criando o X para fechar o MENU*/
+    #nav.active #hamburguer::before {
+        transform:rotate(135deg); /*Rotaciona o traço no eixo formando o X*/
+    }
+    #nav.active #hamburguer::after {
+        transform:rotate(-135deg); /*Rotaciona o traço no eixo ao ldo contrario para formar o X*/
+        top:-7px;
+    }
+}
+
+
+
+
+
+
+#logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#nav{
+
+}
+
